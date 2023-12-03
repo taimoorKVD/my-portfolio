@@ -688,8 +688,8 @@
                                                 </div>
                                                 <div class="col-md-12 text-center my-3">
                                                     <div class="loading">Loading</div>
-                                                    <div class="error-message"></div>
-                                                    <div class="sent-message">Your message has been sent. Thank you!
+                                                    <div class="error-message-1"></div>
+                                                    <div class="sent-message-1">Your message has been sent. Thank you!
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12 text-center">
@@ -797,6 +797,10 @@
                 .then(() => {
                     btn.value = 'Send Message';
                     alert("Thank you for contacting us!");
+
+                    document.getElementById('sender_name').value = '';
+                    document.getElementById('sender_email').value = '';
+                    document.getElementById('message').value = '';
                 }, (err) => {
                     btn.value = 'Send Message';
                     console.log(JSON.stringify(err));
