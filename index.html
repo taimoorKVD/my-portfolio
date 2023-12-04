@@ -793,9 +793,6 @@
                 .then(() => {
                     alert("Thank you for contacting us!");
 
-                    // document.getElementById('sender_name').value = '';
-                    // document.getElementById('sender_email').value = '';
-                    // document.getElementById('message').value = '';
                     ['sender_name', 'sender_email', 'message'].forEach(field => document.getElementById(field).value = '');
                     btn.disabled = false;
                     btn.innerHTML = 'Send Message';
