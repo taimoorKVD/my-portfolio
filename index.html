@@ -663,8 +663,10 @@
                                     <div>
                                         <form id="form" role="form" class="php-email-form">
                                             <div class="row">
-                                                <input type="hidden" name="receiver_name" id="receiver_name" value="Mohammad Taimoor Hussain">
-                                                <input type="hidden" name="receiver_email" id="receiver_email" value="taimoor.kingdomvision@gmail.com">
+                                                <input type="hidden" name="receiver_name" id="receiver_name"
+                                                       value="Mohammad Taimoor Hussain">
+                                                <input type="hidden" name="receiver_email" id="receiver_email"
+                                                       value="taimoor.kingdomvision@gmail.com">
                                                 <div class="col-md-12 mb-3">
                                                     <div class="form-group">
                                                         <input type="text" aria-label="" name="sender_name"
@@ -689,7 +691,7 @@
                                                 <div class="col-md-12 text-center">
                                                     <button type="submit"
                                                             class="button button-a button-big button-rounded mt-2"
-                                                            id="button" value="Send Email">Send Message
+                                                            id="button">Send Message
                                                     </button>
                                                 </div>
                                             </div>
@@ -782,23 +784,27 @@
         .addEventListener('submit', function (event) {
             event.preventDefault();
 
-            btn.value = 'Sending...';
+            btn.disabled = true;
+            btn.innerHTML = 'Sending...';
 
-            const serviceID = 'service_fzc3b9j';
-            const templateID = 'template_9hwmqts';
-
+            const serviceID = 'service_fzc3b9j',
+                templateID = 'template_9hwmqts';
             emailjs.sendForm(serviceID, templateID, this)
                 .then(() => {
-                    btn.value = 'Send Message';
                     alert("Thank you for contacting us!");
 
-                    document.getElementById('sender_name').value = '';
-                    document.getElementById('sender_email').value = '';
-                    document.getElementById('message').value = '';
+                    // document.getElementById('sender_name').value = '';
+                    // document.getElementById('sender_email').value = '';
+                    // document.getElementById('message').value = '';
+                    ['sender_name', 'sender_email', 'message'].forEach(field => document.getElementById(field).value = '');
+                    btn.disabled = false;
+                    btn.innerHTML = 'Send Message';
+
                 }, (err) => {
-                    btn.value = 'Send Message';
                     console.log(JSON.stringify(err));
                     alert('Something went wrong. Please try again later!');
+                    btn.disabled = false;
+                    btn.innerHTML = 'Send Message';
                 });
         });
 </script>
